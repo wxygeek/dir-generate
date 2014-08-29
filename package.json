@@ -2,6 +2,9 @@
   "name": "dir-generate",
   "version": "0.0.1",
   "description": "a easy tool to make dir with markdown",
+  "bin": {
+    "dir-generate": "./lib/dir-generate"
+  },
   "keywords": [
     "mkdir",
     "dir",
