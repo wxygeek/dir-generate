@@ -1,1 +1,1 @@
-module.exports = require('./lib/dir-generate.js');
+module.exports = require('./lib/dir-generate.js').run();
