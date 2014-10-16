@@ -6,7 +6,9 @@ a easy tool to make dir with markdown
 [![NPM](https://nodei.co/npm/dir-generate.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dir-generate/)
 
 ###usage for require
+
 ===============
+
 ####install
 	npm install dir-generate
 
@@ -19,12 +21,14 @@ a easy tool to make dir with markdown
 	  }
 	  console.log('Everything is ok.')
 	});
-	
+
 ####methods
 * runMarkdownFile(filePath, dirPath, callback)
 
 ###usage for command-line
+
 ===============
+
 ####install
 	npm install -g dir-generate
 
@@ -37,7 +41,7 @@ a easy tool to make dir with markdown
     -h, --help                output usage information
     -d, --dir [source_dir]    set target dir path. defaults to ./
     -f, --file [source_file]  set config file path. defaults to ./index.md
-    
+
 ###usage for dev
 
 * make jshint
@@ -46,7 +50,9 @@ a easy tool to make dir with markdown
 * make test-all
 
 ###example file
+
 ===============
+
 	index.md
 	--------------------------
 	* folder1
@@ -66,14 +72,20 @@ a easy tool to make dir with markdown
 	dir-generate -d ./ -f ./index.md
 
 ###tip
+
 ===============
+
 * the folder name cannot have a **Filename Extension**
 * the file name must have a **Filename Extension**
 
 ###TODO
+
 ===============
+
 * use json to generate dir
 
 ###Lincense
+
 ===============
+
 MIT
