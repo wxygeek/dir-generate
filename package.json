@@ -1,6 +1,6 @@
 {
   "name": "dir-generate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a easy tool to make dir with markdown",
   "bin": {
     "dir-generate": "./bin/dir-generate.js"
@@ -8,7 +8,8 @@
   "keywords": [
     "mkdir",
     "dir",
-    "markdown"
+    "markdown",
+    "generate"
   ],
   "devDependencies": {
     "debug": "~2.1.0",
