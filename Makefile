@@ -1,5 +1,4 @@
 TESTS = $(shell ls -S `find test -type f -name "*.test.js" -print`)
-REPORTER = tap
 
 install:
 	@npm install
@@ -9,11 +8,14 @@ jshint:
 	@./node_modules/.bin/jshint ./
 
 test: install
-	@$(NODE) ./node_modules/.bin/mocha \
-		--require should \
-		--reporter $(REPORTER) \
+	@NODE_ENV=test node ./node_modules/.bin/mocha \
 		$(TESTS)
 
-test-all: jshint test
+test-cov cov: install
+	@NODE_ENV=test ./node_modules/.bin/istanbul cover --preserve-comments \
+		./node_modules/.bin/_mocha \
+		$(TESTS)
 
-.PHONY: jshint test test-all
+test-all: jshint test cov
+
+.PHONY: jshint test test-all cov test-cov
