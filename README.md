@@ -7,14 +7,12 @@ generate dir with using a markdown file
 
 [![NPM](https://nodei.co/npm/dir-generate.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dir-generate/)
 
-###usage for require
+### usage for require
 
-===============
-
-####install
+#### install
 	npm install dir-generate
 
-####usage
+#### usage
 	var dg = require('dir-generate');
 	dg.runMarkdownFile('/Users/gkuchan/Documents/index.md', '/Users/gkuchan/Documents', function (err) {
 	  if(err) {
@@ -24,34 +22,34 @@ generate dir with using a markdown file
 	  console.log('Everything is ok.')
 	});
 
-####methods
+#### methods
 * runMarkdownFile(filePath, dirPath, callback)
 
-###usage for command-line
+### usage for command-line
 
 ===============
 
-####install
+#### install
 	npm install -g dir-generate
 
-####help
+#### help
 	dir-generate -help
 
-####usage
+#### usage
 	Usage: dir-generate [options]
   	Options:
     -h, --help                output usage information
     -d, --dir [source_dir]    set target dir path. defaults to ./
     -f, --file [source_file]  set config file path. defaults to ./index.md
 
-###usage for dev
+### test
 
 * make jshint
 * make test
 * make cov
 * make test-all
 
-###example file
+### example
 
 ===============
 
@@ -73,21 +71,15 @@ generate dir with using a markdown file
 
 	dir-generate -d ./ -f ./index.md
 
-###tip
+### tip
 
-===============
+* the folder name **cannot** have a Filename Extension
+* the file name **must** have a Filename Extension
 
-* the folder name cannot have a **Filename Extension**
-* the file name must have a **Filename Extension**
-
-###TODO
-
-===============
+### TODO
 
 * <del>use json to generate dir</del>
 
-###Lincense
-
-===============
+### License
 
 MIT
