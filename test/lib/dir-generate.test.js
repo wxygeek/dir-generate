@@ -17,9 +17,10 @@ var dg = require('../../');
 var fse = require('fs-extra');
 
 var filePath = path.join(__dirname, 'test.md');
+var filePath2 = path.join(__dirname, 'test.json');
 var dirPath = path.join(__dirname);
 
-describe('/lib/dir-generate.js: runMarkdownFile', function () {
+describe('/lib/dir-generate.js: run', function () {
   afterEach(function (done) {
     mm.restore();
     fse.remove(path.join(__dirname, 'hello'), function (err) {
@@ -36,7 +37,7 @@ describe('/lib/dir-generate.js: runMarkdownFile', function () {
       }
     }
 
-    dg.runMarkdownFile(filePath, dirPath, function (err, dirPath) {
+    dg.run(filePath, dirPath, function (err, dirPath) {
       should.not.exist(err);
       num += 5;
 
@@ -69,7 +70,7 @@ describe('/lib/dir-generate.js: runMarkdownFile', function () {
 
   describe('should run error', function () {
     it('Arguments wrong.', function (done) {
-      dg.runMarkdownFile(null, null, function (err) {
+      dg.run(null, null, function (err) {
         err.message.should.equal('Arguments wrong.');
         done();
       });
@@ -77,7 +78,7 @@ describe('/lib/dir-generate.js: runMarkdownFile', function () {
 
     it('fse.readFile', function (done) {
       mm.error(fse, 'readFile', 'mock error');
-      dg.runMarkdownFile(filePath, dirPath, function (err) {
+      dg.run(filePath, dirPath, function (err) {
         should(err).Error;
         done();
       });
@@ -85,9 +86,49 @@ describe('/lib/dir-generate.js: runMarkdownFile', function () {
 
     it('fse.ensureDir', function (done) {
       mm.error(fse, 'ensureDir', 'mock error');
-      dg.runMarkdownFile(filePath, dirPath, function (err) {
+      dg.run(filePath, dirPath, function (err) {
         should(err).Error;
         done();
+      });
+    });
+  });
+
+  it('should run with JSON ok', function (done) {
+    var num = 0;
+
+    function check () {
+      if(!--num) {
+        done();
+      }
+    }
+
+    dg.run(filePath2, dirPath, function (err, dirPath) {
+      should.not.exist(err);
+      num += 5;
+
+      fse.readdir(path.join(dirPath, 'hello'), function (err, files) {
+        should.not.exist(err);
+        check();
+      });
+
+      fse.readFile(path.join(dirPath, 'hello', '123.txt'), function (err, files) {
+        should.not.exist(err);
+        check();
+      });
+
+      fse.readdir(path.join(dirPath, 'hello', 'ok'), function (err, files) {
+        should.not.exist(err);
+        check();
+      });
+
+      fse.readFile(path.join(dirPath, 'hello', 'ok', 'abc.md'), function (err, files) {
+        should.not.exist(err);
+        check();
+      });
+
+      fse.readFile(path.join(dirPath, 'hello', 'ok', 'good.js'), function (err, files) {
+        should.not.exist(err);
+        check();
       });
     });
   });

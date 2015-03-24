@@ -84,7 +84,7 @@ generate dir with using a markdown file
 
 ===============
 
-* use json to generate dir
+* <del>use json to generate dir</del>
 
 ###Lincense
 

@@ -26,7 +26,7 @@ commander.parse(process.argv);
 var filePath = commander.file;
 var dirPath = commander.dir;
 
-dg.runMarkdownFile(filePath, dirPath, function (err, path) {
+dg.run(filePath, dirPath, function (err, path) {
   if(err) {
     return err;
   }
